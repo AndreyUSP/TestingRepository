@@ -50,3 +50,4 @@
 
 //protected static Logger LOG = LogManager.GetCurrentClassLogger();
 //LOG.Info("Пользователь не соответствует заявленным данным: " + Name);
+//protected static Logger LOG = LogManager.GetCurrentClassLogger();
