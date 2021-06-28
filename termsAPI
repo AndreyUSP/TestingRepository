@@ -1,0 +1,69 @@
+I’ve been doing a fairly deep dive on API testing over the last several month, both as part of the project I am currently working on and as part of some courses I am preparing. As with any specialization there is a lot of terminology that goes into it and so I thought I would put together a post that summarizes a number of definitions related to API testing.
+
+Many of these definitions can have different meanings depending on the context you are working in and they are used by your specific team, so don’t take this as definitive. They are just the way I have explained them to myself so that I can better understand and conceptualize them. By defining these terms I am better able to wrap my mind around them and to use them to do better testing.  Hopefully they help you out too in your testing journey
+
+REST
+
+Acronym for REpresentation State Transfer.  This is a protocol that is based on the dissertation of a guy name Roy Fielding. Obviously there is a lot that goes into this, but in really simple terms, a RESTful API is one that consistently applies actions (verbs) like GET, POST, PUT and DELETE to resources (nouns) which are usually a url that may have some parameters.
+
+Further Reading:
+
+Martin Folwer’s take on using REST well
+
+Ruben Verborgh has a good explanation on Quora
+
+Hypermedia
+
+People will argue about this (surprise), but some say that an API is only truly RESTful if it uses a hypermedia approach. Hypermedia means that the server tells you what resources are available for you to use. Every request to the server should tell you what other resources and actions are available to you on objects that are related to the request you just made.  Sounds confusing? You are already pretty used to it. You came on this web page and there are number of links here that allow you navigate to other places on the web. When we simplify it down, that is really all hypermedia in an API is doing. It is telling you some other links (endpoints) and actions that you can use in the API.
+
+HATEOS
+
+Speaking of Hypermedia, let’s just make up a big long hard to say acronym that describes it’s usage. HATEOS stands for Hypermedia As The Engine Of State and is just a way of making people argue about pronunciation saying that your REST API uses Hypermedia.
+
+GraphQL
+
+It’s new! It’s exciting! It shall rule the world! Ok, in reality we like to get excited about new things in the tech space, but GraphQL is just another way of specifying an API. It is a query language that helps to optimize some things in network API calls and so for applications that have high performance requirements it can be very helpful. It is a bit more complex and rigid then REST though.
+
+Idempotent
+
+Big word for saying that every time you perform a call you get back the same result. I’ll give you a silly example to help you remember.  Think about putting snow tires on a car. Once you have them on you have a car with snow tires. Now if you repeat that ‘request’ you will end up with the same thing. A car with snow tires. In an API this would be a PUT call.  No matter how many times you send the call (with the same parameters), it should always give you back the same result.
+
+Safety
+
+Speaking of idempotency, a GET call is idempotent (you get the same result every time you execute it), but it has an additional factor called safety.  Safety just means that nothing changes when you issue the command. Let’s use a silly example again. Imagine a bookshelf.  You bend your head sideways a read the title off the spine of a book. Nothing has changed and no matter how many times you do that nothing will change. This is an example of a safe call.
+
+Verbs and Nouns
+
+No this isn’t English class, but we do sometimes talk about nouns and verbs in APIs. Verbs are the actions that an API can do (like GET, POST, PUT, DELETE) and the nouns are what the API acts on (resources usually represented by url endpoints)
+
+Services (micro-services)
+
+Buzzword time. So what is a micro-service? Well, it is a service that is very small, or uh, micro sized (see what I did there?). And a service is just something that does stuff and that lets you tell it how to do stuff (usually through APIs).  See it doesn’t have to be hard! Let’s use an example to get a better handle on it.  You want to create a meme (because you are that kind of cool) but photo editing is just to passe for you.  If only you had something you could send a command to that said ‘generate a cat meme for me with these words.’  Well if you did, that would be an example of a service – memes as a service in fact. You give it some commands.  It does something for you and produces an output for you based on the commands you gave.
+
+Micro-services is just an architectural pattern that tries to have a number of services that can each do one specific thing. These various services can then talk to each other through the defined APIs. The micro part just means that each service has a limited number of tasks that it can do. So you might break down a customer facing service into a number of micro-services that each do one particular part of the overall task at hand.
+
+Schema
+
+Adding this one in based on comments. A schema is used to define the structure of the data in an API. It defines things like what the API can do with various endpoints and what data it is allowed to use. If you have a well defined schema for your API it can be used to automate things like the creation of documentation and sometimes even the way  it is used. If you have defined you schema in the Open API format you can use tools like Swagger to help with this.
+
+I have added the next few terms based on questions I have received through private messages.
+
+Payload
+
+When you send API requests you are trying to get a service to ‘do something.’ The service will then tell you what it did or give you what it asked for. The payload is the part of that response that is communicating directly to you. In REST APIs this is usually some JSON formatted data.
+
+Let’s say you want to see a random picture of a cat (because you are on the internet). You go to The Cat API (yes it exists – this is the internet we are talking about) and you send an API request. You get back an JSON object with a link to a cat picture along with a few other pieces of information. That JSON is the payload.
+
+Payload isn’t just something you get from the server though. You can also send payload to the server as well. This is known as the body of your request and is once again usually a JSON object that you send to the server. It is used to make more complex requests or when you are trying to create or modify an object on the service and you need to give it information about the object you are creating
+
+Endpoint
+
+An API is a communication channel. Think of making a phone call. Your phone is one end of the communication channel, but you need to somehow connect to another phone. To do this you punch in someone’s phone number. You can think of that phone number as being similar to an API endpoint. That phone number lets you complete the communication with a particular phone of your choosing.  In an API you do this with a link to the resource that you want to interact with.  The link is kind of like that phone number. It lets you ‘connect’ to a particular item on the server and interact with it.
+
+URI
+
+URI stand for Universal Resource Indicator and pretty much it’s just a fancy way for saying URL which in the API world is pretty much just another way of saying endpoint. Confusing? Yup. That’s why I made this glossary.
+
+All good things must end – including this list
+
+I’m sure there are other terms to define in API testing. If there are any you find confusing, let me know and perhaps I’ll add to this list over time. Maybe I’ll even get ambitious and make this into it’s own page on the site. We will see.
